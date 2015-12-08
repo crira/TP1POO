@@ -11,6 +11,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.Plot;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
@@ -20,11 +21,19 @@ import org.jfree.util.Rotation;
  * @author Matthieu
  */
 public class Vue_camembert extends JInternalFrame{
+    Camembert c;
+    ChartPanel panel;
+    JFreeChart charts;
     
-     public class Camembert extends JFreeChart{
-        public Camembert(Plot p){
-            super(p);
-         
+    public Vue_camembert(){
+        c = new Camembert();
+        charts = c.createChart(c.createSampleDataset());
+        panel=new ChartPanel(charts);
+        this.add(panel);
+    }
+    
+     public class Camembert{
+        public Camembert() {
         
         
         // create a dataset...
