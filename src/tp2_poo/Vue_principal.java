@@ -25,8 +25,10 @@ public class Vue_principal extends JFrame{
         formulaire=new Vue_formulaire();
         liste = new Vue_liste();
         camembert = new Vue_camembert();
+        camembert.setVisible(true);
         
-         this.setLayout(new GridBagLayout());
+        
+        this.setLayout(new GridBagLayout());
         GridBagConstraints cont = new GridBagConstraints();
         
         

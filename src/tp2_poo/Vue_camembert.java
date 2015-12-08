@@ -34,7 +34,7 @@ public class Vue_camembert extends JInternalFrame{
         final JFreeChart chart = createChart(dataset);
 
         // add the chart to a panel...
-        ChartPanel charti = new ChartPanel(chart);
+        final ChartPanel charti = new ChartPanel(chart);
         charti.setPreferredSize(new java.awt.Dimension(500, 270));
        
         
@@ -69,7 +69,9 @@ public class Vue_camembert extends JInternalFrame{
         return chart;
         
     }
+     
         }
+
     }
     
 
