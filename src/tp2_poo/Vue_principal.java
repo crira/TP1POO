@@ -5,8 +5,10 @@
  */
 package tp2_poo;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
@@ -20,34 +22,32 @@ public class Vue_principal extends JFrame{
   Vue_histogramme histogramme;
   Vue_formulaire formulaire;
   Vue_camembert camembert;
+  Promotion p;
     
     public Vue_principal(){
+        p = new Promotion();
         formulaire=new Vue_formulaire();
-        liste = new Vue_liste();
-        camembert = new Vue_camembert();
-        camembert.setVisible(true);
+        liste = new Vue_liste(p);
+        camembert = new Vue_camembert(p);
+        histogramme = new Vue_histogramme(p);
         
+        this.setContentPane(new JDesktopPane());
         
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints cont = new GridBagConstraints();
+        this.add(formulaire);
+        formulaire.setLocation(0, 0);
         
+        this.add(liste);
+        liste.setLocation(camembert.getWidth()+histogramme.getWidth(), 0);
         
+        this.add(histogramme);
+        histogramme.setLocation(camembert.getWidth(), formulaire.getHeight());
         
-        cont.gridx=0;
-        cont.gridy=0;
-        this.add(formulaire,cont);
-        
-        cont.gridx=1;
-        cont.gridy=0;
-        cont.gridheight=2;
-        this.add(liste,cont);
-        
-        cont.gridx=0;
-        cont.gridy=1;
-        cont.gridheight=1;
-        this.add(camembert,cont);
+        this.add(camembert);
+        camembert.setLocation(0,formulaire.getHeight());
+       
         
         this.setVisible(true);
+        this.setPreferredSize(new Dimension(1400,700));
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

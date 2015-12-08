@@ -5,6 +5,8 @@
  */
 package tp2_poo;
 
+
+import obs.Observable;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -17,11 +19,11 @@ import javax.swing.JTextField;
  *
  * @author Matthieu
  */
-public class Vue_formulaire extends JInternalFrame{
-    JLabel titre,num,nom,prenom,bac,dept;
-    JTextField tnum,tnom,tprenom;
+public class Vue_formulaire extends JInternalFrame implements Observable{
+    JLabel titre,num,nom,prenom,bac,dept,titre2,numero;
+    JTextField tnum,tnom,tprenom,tnumero;
     JComboBox cbac,cdept;
-    JButton Ajout;
+    JButton Ajout,supprimer;
     
     public Vue_formulaire(){
         titre = new JLabel("Ajout d'un etudiant");
@@ -29,11 +31,15 @@ public class Vue_formulaire extends JInternalFrame{
         nom = new JLabel("Prénom");
         prenom = new JLabel("Nom");
         bac = new JLabel("Bac");
+        titre2 = new JLabel("Supprimer un etudiant");
+        numero = new JLabel("numero");
         dept = new JLabel("Dept");
         tnum = new JTextField(10);
         tnom = new JTextField(10);
+        tnumero=new JTextField(10);
         tprenom = new JTextField(10);
         Ajout = new JButton("Ajout");
+        supprimer = new JButton("Supprimer");
         cbac = new JComboBox();
         cbac.addItem("S");
         cbac.addItem("ES");
@@ -93,13 +99,31 @@ public class Vue_formulaire extends JInternalFrame{
         cont.gridx=9;
         cont.gridy=1;
         this.add(cdept,cont);
+        
+        cont.gridx=0;
+        cont.gridy=3;
+        cont.gridwidth=2;
+        this.add(titre2,cont);
+        
+        cont.gridx=0;
+        cont.gridy=4;
+        cont.gridwidth=1;
+        this.add(numero,cont);
+        
+        cont.gridx=1;
+        cont.gridy=4;
+        this.add(tnumero,cont);
+        
+        cont.gridx=9;
+        cont.gridy=5;
+        this.add(supprimer,cont);
         this.setVisible(true);
         
         cont.gridx=9;
         cont.gridy=2;
         this.add(Ajout,cont);
         this.setVisible(true);
-        
+        this.pack();
     }
     
 }

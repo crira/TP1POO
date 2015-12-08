@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -21,12 +22,12 @@ import javax.swing.JScrollPane;
  */
 public class Vue_liste extends JInternalFrame{
    //JPanel pano;
-   Promotion p;
    JList liste;
    JScrollPane scroll;
+   JButton sup;
    
-   public Vue_liste(){
-       p=new Promotion();
+   public Vue_liste(Promotion p) {
+       sup = new JButton("Supprimer");
        liste = new JList(p.getListeEtudiants().toArray());
        ArrayList<Etudiant> list = p.getListeEtudiants();
        String t[]=new String[list.size()];
@@ -35,9 +36,23 @@ public class Vue_liste extends JInternalFrame{
        liste.setListData(t);
        
        scroll = new JScrollPane(liste);
-       this.add(scroll);
+       
+       this.setLayout(new GridBagLayout());
+        GridBagConstraints cont = new GridBagConstraints();
+        
+        cont.gridx=0;
+        cont.gridy=0;
+        this.add(scroll,cont);
+        
+        cont.gridx=0;
+        cont.gridy=1;
+        this.add(sup,cont);
+        
+       //this.add(scroll);
        
        this.setVisible(true);
+       scroll.setPreferredSize(new Dimension(300,600));
+       this.pack();
    }
    
     

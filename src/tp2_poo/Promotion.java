@@ -70,6 +70,10 @@ public class Promotion {
         }
         return tab;
     }
+    
+   
+
+
 
     public void loadFileCSV() {
         String ligne,idt,nom,prenom,dept,bac;
@@ -93,4 +97,15 @@ public class Promotion {
             System.out.println("Probleme import csv");
         }
     }
+ public int ComptDpt(String dpt)
+    {
+        int compt = 0;
+        for(int i =0; i<list.size();i++)
+        {
+            if(list.get(i).getDpt().equals(dpt))
+                compt++;
+        }
+        return compt;
+    }
+    
 }

@@ -5,6 +5,7 @@
  */
 package tp2_poo;
 
+import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -25,19 +26,22 @@ public class Vue_camembert extends JInternalFrame{
     ChartPanel panel;
     JFreeChart charts;
     
-    public Vue_camembert(){
-        c = new Camembert();
-        charts = c.createChart(c.createSampleDataset());
+    public Vue_camembert(Promotion p){
+        c = new Camembert(p);
+        charts = c.createChart(c.createSampleDataset(p));
         panel=new ChartPanel(charts);
         this.add(panel);
+        this.setPreferredSize(new Dimension(500,370));
+        this.pack();
+        this.setVisible(true);
     }
     
      public class Camembert{
-        public Camembert() {
+        public Camembert(Promotion p) {
         
         
         // create a dataset...
-        final PieDataset dataset = createSampleDataset();
+        final PieDataset dataset = createSampleDataset(p);
 
         // create the chart...
         final JFreeChart chart = createChart(dataset);
@@ -49,16 +53,15 @@ public class Vue_camembert extends JInternalFrame{
         
 
     }
-     private PieDataset createSampleDataset(){
-        final DefaultPieDataset result = new DefaultPieDataset();
-        for(int i =0;i<10;i++){
-            result.setValue("lol", i);
+     private PieDataset createSampleDataset(Promotion p){
+        int nb = 1;
+            final DefaultPieDataset result = new DefaultPieDataset();
+            for(int i =0; i<p.getListeEtudiants().size(); i++){
+               result.setValue(p.getListeEtudiants().get(i).getDpt(), p.ComptDpt(p.getListeEtudiants().get(i).getDpt()));
+            }
+            return result;
         }
-        return result;
-        
-        
-        
-    }
+     
      
      private JFreeChart createChart(final PieDataset dataset) {
         
