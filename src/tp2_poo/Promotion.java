@@ -4,6 +4,7 @@
  */
 package tp2_poo;
 
+import obs.Observable;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,13 +15,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import obs.Observateur;
 
 
 /**
  *
  * @author Effantin
  */
-public class Promotion {
+public class Promotion implements Observable{
 
     private ArrayList<Etudiant> list;
 
@@ -106,6 +108,21 @@ public class Promotion {
                 compt++;
         }
         return compt;
+    }
+
+    @Override
+    public void addObservateur(Observateur o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeObservateur(Observateur o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyObservateur() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

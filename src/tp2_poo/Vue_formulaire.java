@@ -6,7 +6,7 @@
 package tp2_poo;
 
 
-import obs.Observable;
+import obs.Observateur;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author Matthieu
  */
-public class Vue_formulaire extends JInternalFrame implements Observable{
+public class Vue_formulaire extends JInternalFrame implements Observateur{
     JLabel titre,num,nom,prenom,bac,dept,titre2,numero;
     JTextField tnum,tnom,tprenom,tnumero;
     JComboBox cbac,cdept;
@@ -124,6 +124,11 @@ public class Vue_formulaire extends JInternalFrame implements Observable{
         this.add(Ajout,cont);
         this.setVisible(true);
         this.pack();
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

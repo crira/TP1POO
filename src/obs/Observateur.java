@@ -10,5 +10,5 @@ package obs;
  * @author Matthieu
  */
 public interface Observateur {
-    
+    void update();
 }
