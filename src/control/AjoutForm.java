@@ -21,8 +21,10 @@ public class AjoutForm extends Controleur{
 
     @Override
     public void control(ArrayList<String> s) {
-       Etudiant etu = new Etudiant(s.get(0), s.get(1), s.get(2), s.get(3), s.get(3));
-    p.addEtudiant(etu); }
+    Etudiant etu = new Etudiant(s.get(0), s.get(1), s.get(2), s.get(3), s.get(3));
+    p.addEtudiant(etu); 
+    p.notifyObservateur();
+    }
 
 
     

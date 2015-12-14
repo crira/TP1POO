@@ -25,8 +25,10 @@ import obs.Observateur;
 public class Promotion implements Observable{
 
     private ArrayList<Etudiant> list;
+    private ArrayList<Observateur> observateurs;
 
     public Promotion() {
+        observateurs = new ArrayList();
         list = new ArrayList<Etudiant>();
         loadFileCSV();
     }
@@ -112,17 +114,18 @@ public class Promotion implements Observable{
 
     @Override
     public void addObservateur(Observateur o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        observateurs.add(o);
     }
 
     @Override
     public void removeObservateur(Observateur o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        observateurs.remove(o);
     }
 
     @Override
     public void notifyObservateur() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        for(int i = 0; i<observateurs.size();i++){
+            observateurs.get(i).update();
+        }}
     
 }

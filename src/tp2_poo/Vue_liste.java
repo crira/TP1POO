@@ -5,6 +5,8 @@
  */
 package tp2_poo;
 
+import control.Controleur;
+import control.SuppListe;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,18 +17,24 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import obs.Observateur;
 
 /**
  *
  * @author Matthieu
  */
-public class Vue_liste extends JInternalFrame implements ActionListener{
+public class Vue_liste extends JInternalFrame implements ActionListener,Observateur{
    //JPanel pano;
    JList liste;
    JScrollPane scroll;
    JButton sup;
+   Promotion prom;
+   ArrayList<String> modif;
    
    public Vue_liste(Promotion p) {
+       modif=new ArrayList();
+       prom=p;
+       prom.addObservateur(this);
        sup = new JButton("Supprimer");
        liste = new JList(p.getListeEtudiants().toArray());
        ArrayList<Etudiant> list = p.getListeEtudiants();
@@ -52,14 +60,33 @@ public class Vue_liste extends JInternalFrame implements ActionListener{
        
        this.setVisible(true);
        scroll.setPreferredSize(new Dimension(300,600));
+       sup.addActionListener(this);
        this.pack();
    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
       if(e.getSource()==sup){
-          System.out.println(liste.getSelectedValue().toString());
+           
+          modif.add(liste.getSelectedValue().toString().substring(0,3));
+          System.out.println(liste.getSelectedValue().toString().substring(0,3));
+          Controleur controleur;
+          controleur = new SuppListe(prom);
+          controleur.control(modif);
       }}
+
+    @Override
+    public void update() {
+       liste = new JList(prom.getListeEtudiants().toArray());
+       ArrayList<Etudiant> list = prom.getListeEtudiants();
+       String t[]=new String[list.size()];
+       for (int i=0;i<list.size();i++){
+           t[i]=list.get(i).getId()+" "+list.get(i).getNom()+" "+list.get(i).getPrenom()+" ("+list.get(i).getDpt()+")";
+           System.out.println(list.get(i).getNom());
+       }
+       liste.setListData(t);
+       
+    }
    
     
 }

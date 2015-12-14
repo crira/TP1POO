@@ -27,6 +27,7 @@ public class SuppForm extends Controleur{
         Etudiant etu;
         etu=p.searchEtudiant(s.get(0));
         p.removeEtudiant(etu);
+        p.notifyObservateur();
     }
     
 }

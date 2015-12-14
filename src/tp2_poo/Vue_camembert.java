@@ -12,8 +12,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.chart.plot.Plot;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
@@ -26,11 +24,14 @@ public class Vue_camembert extends JInternalFrame implements Observateur{
     Camembert c;
     ChartPanel panel;
     JFreeChart charts;
+    Promotion prom;
     
     public Vue_camembert(Promotion p){
+        prom=p;
         c = new Camembert(p);
         charts = c.createChart(c.createSampleDataset(p));
         panel=new ChartPanel(charts);
+        p.addObservateur(this);
         this.add(panel);
         this.setPreferredSize(new Dimension(500,370));
         this.pack();
@@ -39,7 +40,10 @@ public class Vue_camembert extends JInternalFrame implements Observateur{
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.remove(panel);
+        charts = c.createChart(c.createSampleDataset(prom));
+        panel=new ChartPanel(charts);
+        this.add(panel);
     }
     
      public class Camembert{

@@ -6,6 +6,7 @@
 package tp2_poo;
 
 
+import control.AjoutForm;
 import control.Controleur;
 import control.SuppForm;
 import java.awt.GridBagConstraints;
@@ -141,7 +142,13 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==Ajout){
-            System.out.println("pas implement");
+            modif.add(tnum.getText());
+            modif.add(tnom.getText());
+            modif.add(tprenom.getText());
+            modif.add(cbac.getSelectedItem().toString());
+            modif.add(cdept.getSelectedItem().toString());
+            Controleur controleur=new AjoutForm(p);
+            controleur.control(modif);
         }
         if(e.getSource()==supprimer){
                 System.out.println("Supprimé");
