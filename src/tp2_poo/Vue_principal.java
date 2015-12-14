@@ -26,7 +26,7 @@ public class Vue_principal extends JFrame{
     
     public Vue_principal(){
         p = new Promotion();
-        formulaire=new Vue_formulaire();
+        formulaire=new Vue_formulaire(p);
         liste = new Vue_liste(p);
         camembert = new Vue_camembert(p);
         histogramme = new Vue_histogramme(p);

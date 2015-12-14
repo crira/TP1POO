@@ -9,6 +9,8 @@ package tp2_poo;
 import obs.Observateur;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -19,13 +21,15 @@ import javax.swing.JTextField;
  *
  * @author Matthieu
  */
-public class Vue_formulaire extends JInternalFrame implements Observateur{
+public class Vue_formulaire extends JInternalFrame implements ActionListener{
     JLabel titre,num,nom,prenom,bac,dept,titre2,numero;
     JTextField tnum,tnom,tprenom,tnumero;
     JComboBox cbac,cdept;
     JButton Ajout,supprimer;
+    Promotion p;
     
-    public Vue_formulaire(){
+    public Vue_formulaire(Promotion prom){
+        p=prom;
         titre = new JLabel("Ajout d'un etudiant");
         num = new JLabel("Numero");
         nom = new JLabel("Prénom");
@@ -124,11 +128,20 @@ public class Vue_formulaire extends JInternalFrame implements Observateur{
         this.add(Ajout,cont);
         this.setVisible(true);
         this.pack();
-    }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        supprimer.addActionListener(this);
+        Ajout.addActionListener(this);
     }
     
-}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==Ajout){
+            System.out.println("Ajouté");
+            Etudiant etu =new Etudiant(tnum.getText(), tnom.getText(), tprenom.getText(), (String) cbac.getSelectedItem(), (String) cdept.getSelectedItem());
+            p.addEtudiant(etu);
+        }
+        if(e.getSource()==supprimer){
+                System.out.println("Supprimé");
+                }
+    
+}}

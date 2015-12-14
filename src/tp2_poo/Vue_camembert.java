@@ -7,6 +7,7 @@ package tp2_poo;
 
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
+import obs.Observateur;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -21,7 +22,7 @@ import org.jfree.util.Rotation;
  *
  * @author Matthieu
  */
-public class Vue_camembert extends JInternalFrame{
+public class Vue_camembert extends JInternalFrame implements Observateur{
     Camembert c;
     ChartPanel panel;
     JFreeChart charts;
@@ -34,6 +35,11 @@ public class Vue_camembert extends JInternalFrame{
         this.setPreferredSize(new Dimension(500,370));
         this.pack();
         this.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
      public class Camembert{
