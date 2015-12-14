@@ -8,6 +8,8 @@ package tp2_poo;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -18,7 +20,7 @@ import javax.swing.JScrollPane;
  *
  * @author Matthieu
  */
-public class Vue_liste extends JInternalFrame{
+public class Vue_liste extends JInternalFrame implements ActionListener{
    //JPanel pano;
    JList liste;
    JScrollPane scroll;
@@ -52,6 +54,12 @@ public class Vue_liste extends JInternalFrame{
        scroll.setPreferredSize(new Dimension(300,600));
        this.pack();
    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      if(e.getSource()==sup){
+          System.out.println(liste.getSelectedValue().toString());
+      }}
    
     
 }
