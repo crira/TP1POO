@@ -5,7 +5,6 @@
  */
 package tp2_poo;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**

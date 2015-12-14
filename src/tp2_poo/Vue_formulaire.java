@@ -6,16 +6,19 @@
 package tp2_poo;
 
 
-import obs.Observateur;
+import control.Controleur;
+import control.SuppForm;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.lang.String;
 
 /**
  *
@@ -27,8 +30,10 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
     JComboBox cbac,cdept;
     JButton Ajout,supprimer;
     Promotion p;
+    ArrayList<String> modif;
     
     public Vue_formulaire(Promotion prom){
+        modif = new ArrayList();
         p=prom;
         titre = new JLabel("Ajout d'un etudiant");
         num = new JLabel("Numero");
@@ -136,12 +141,13 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==Ajout){
-            System.out.println("Ajouté");
-            Etudiant etu =new Etudiant(tnum.getText(), tnom.getText(), tprenom.getText(), (String) cbac.getSelectedItem(), (String) cdept.getSelectedItem());
-            p.addEtudiant(etu);
+            System.out.println("pas implement");
         }
         if(e.getSource()==supprimer){
                 System.out.println("Supprimé");
+                modif.add(tnumero.getText());
+                Controleur controleur=new SuppForm(p);
+                controleur.control(modif);
                 }
     
 }}

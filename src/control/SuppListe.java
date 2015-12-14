@@ -6,6 +6,7 @@
 package control;
 
 import java.util.ArrayList;
+import tp2_poo.Promotion;
 
 /**
  *
@@ -13,9 +14,15 @@ import java.util.ArrayList;
  */
 public class SuppListe extends Controleur{
 
+    public SuppListe(Promotion promotion) {
+        super(promotion);
+    }
+
     @Override
-    void control(ArrayList<String> s) {
+    public void control(ArrayList<String> s) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
     
 }

@@ -6,6 +6,8 @@
 package control;
 
 import java.util.ArrayList;
+import tp2_poo.Etudiant;
+import tp2_poo.Promotion;
 
 /**
  *
@@ -13,9 +15,18 @@ import java.util.ArrayList;
  */
 public class SuppForm extends Controleur{
 
+    public SuppForm(Promotion promotion) {
+        super(promotion);
+    }
+
+
+
     @Override
-    void control(ArrayList<String> s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void control(ArrayList<String> s) {
+        System.out.println("élève " + s.get(0));
+        Etudiant etu;
+        etu=p.searchEtudiant(s.get(0));
+        p.removeEtudiant(etu);
     }
     
 }
