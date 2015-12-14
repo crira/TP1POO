@@ -5,10 +5,17 @@
  */
 package control;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mattc
  */
 public class SuppForm extends Controleur{
+
+    @Override
+    void control(ArrayList<String> s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
