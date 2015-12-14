@@ -5,12 +5,10 @@
  */
 package control;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author mattc
  */
-public abstract class Controleur {
-        abstract void control(ArrayList<String> s);
+public class AjoutForm extends Controleur{
+    
 }
