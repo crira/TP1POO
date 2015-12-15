@@ -68,8 +68,9 @@ public class Vue_liste extends JInternalFrame implements ActionListener,Observat
     public void actionPerformed(ActionEvent e) {
       if(e.getSource()==sup){
           if(liste.getSelectedValue()!=null){
-            ArrayList<String> modif;
-            modif=new ArrayList();
+          ArrayList<String> modif;
+          modif=new ArrayList();
+          
           modif.add(liste.getSelectedValue().toString().substring(0,3));
           System.out.println(liste.getSelectedValue().toString().substring(0,3));
           Controleur controleur;

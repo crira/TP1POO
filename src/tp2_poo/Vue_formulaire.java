@@ -56,8 +56,12 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
         cbac.addItem("STG");
         
         cdept = new JComboBox();
-            for (int i=1;i<97;i++)
-                cdept.addItem(i);
+            for (int i=1;i<97;i++){
+                if(i<10)
+                cdept.addItem('0'+String.valueOf(i));
+                else
+                    cdept.addItem(String.valueOf(i));
+            }
         
         
         this.setLayout(new GridBagLayout());

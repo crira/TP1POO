@@ -6,6 +6,8 @@
 package control;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import tp2_poo.Etudiant;
 import tp2_poo.Promotion;
 
@@ -30,7 +32,7 @@ public class SuppForm extends Controleur{
             p.removeEtudiant(etu);
             p.notifyObservateur();
         } else {
-            System.out.println("l'etudiant n'existe pas");  
+            JOptionPane.showMessageDialog(new JFrame(),"L'etudiant n'existe pas","Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }
     

@@ -6,6 +6,8 @@
 package control;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import tp2_poo.Etudiant;
 import tp2_poo.Promotion;
 
@@ -28,15 +30,20 @@ public class AjoutForm extends Controleur{
             }
             catch(Exception e){
                 continu=false;
-                System.out.println("le numéro n'est pas un nombre");
+                JOptionPane.showMessageDialog(new JFrame(),"le numéro n'est pas un nombre","Erreur", JOptionPane.WARNING_MESSAGE);
             }
             if(continu==true){
-                Etudiant etu = new Etudiant(s.get(0), s.get(1), s.get(2), s.get(3), s.get(4));
+                if(s.get(1).length()==0||s.get(2).length()==0){
+                 JOptionPane.showMessageDialog(new JFrame(),"l'un des champs est vide","Erreur", JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    Etudiant etu = new Etudiant(s.get(0), s.get(1), s.get(2), s.get(3), s.get(4));
                  p.addEtudiant(etu); 
                  p.notifyObservateur();
+                }
             }
         }else{
-            System.out.println("le numero d'étdiant existe déjà");
+            JOptionPane.showMessageDialog(new JFrame(),"Le numero d'étdiant existe déjà","Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }
 
