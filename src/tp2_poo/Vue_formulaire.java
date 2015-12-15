@@ -19,7 +19,6 @@ import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.lang.String;
 
 /**
  *
@@ -55,7 +54,6 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
         cbac.addItem("ES");
         cbac.addItem("STI");
         cbac.addItem("STG");
-       // cbac.addItem("L");
         
         cdept = new JComboBox();
             for (int i=1;i<97;i++)
