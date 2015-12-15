@@ -29,10 +29,10 @@ public class Vue_liste extends JInternalFrame implements ActionListener,Observat
    JScrollPane scroll;
    JButton sup;
    Promotion prom;
-   ArrayList<String> modif;
+  
    
    public Vue_liste(Promotion p) {
-       modif=new ArrayList();
+       
        prom=p;
        prom.addObservateur(this);
        sup = new JButton("Supprimer");
@@ -67,25 +67,30 @@ public class Vue_liste extends JInternalFrame implements ActionListener,Observat
     @Override
     public void actionPerformed(ActionEvent e) {
       if(e.getSource()==sup){
-           
+          if(liste.getSelectedValue()!=null){
+            ArrayList<String> modif;
+            modif=new ArrayList();
           modif.add(liste.getSelectedValue().toString().substring(0,3));
           System.out.println(liste.getSelectedValue().toString().substring(0,3));
           Controleur controleur;
           controleur = new SuppListe(prom);
           controleur.control(modif);
+      }else{
+              System.out.println("personne n'est selectionné");
+          }
+          
       }}
 
     @Override
     public void update() {
-       liste = new JList(prom.getListeEtudiants().toArray());
+      // liste = new JList(prom.getListeEtudiants().toArray());
+       liste.setListData(prom.getListeEtudiants().toArray());
        ArrayList<Etudiant> list = prom.getListeEtudiants();
        String t[]=new String[list.size()];
        for (int i=0;i<list.size();i++){
-           t[i]=list.get(i).getId()+" "+list.get(i).getNom()+" "+list.get(i).getPrenom()+" ("+list.get(i).getDpt()+")";
-           System.out.println(list.get(i).getNom());
+           t[i]=list.get(i).getId()+" "+list.get(i).getNom()+" "+list.get(i).getPrenom()+" ("+list.get(i).getDpt()+")";  
        }
        liste.setListData(t);
-       
     }
    
     

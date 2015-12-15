@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import obs.Observateur;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -33,22 +34,30 @@ import org.jfree.data.general.DatasetUtilities;
  *
  * @author Matthieu
  */
-public class Vue_histogramme extends JInternalFrame{
+public class Vue_histogramme extends JInternalFrame implements Observateur{
     Histogramme h;
     ChartPanel panel;
     JFreeChart charts;
-
+    Promotion prom;
     
     public Vue_histogramme(Promotion p){
+        prom=p;
         h = new Histogramme(p);
         charts = h.createChart(h.createDataset(p));
         panel=new ChartPanel(charts);
 
-       
+       prom.addObservateur(this);
         this.add(panel);
         this.setPreferredSize(new Dimension(500,370));
         this.pack();
         this.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        charts = h.createChart(h.createDataset(prom));
+        panel=new ChartPanel(charts);
+        this.setContentPane(panel);
     }
     
     public class Histogramme{
@@ -70,7 +79,7 @@ public class Vue_histogramme extends JInternalFrame{
         final String series2 = "ES";
         final String series3 = "STI";
         final String series4 = "STG";
-        final String series5 = "Etr";
+      //  final String series5 = "Etr";
         final String series6 = "Autre";
 
         // column keys...
@@ -83,7 +92,7 @@ public class Vue_histogramme extends JInternalFrame{
         dataset.addValue(p.seriesbacs()[1], series2, category1);
         dataset.addValue(p.seriesbacs()[2], series3, category1);
         dataset.addValue(p.seriesbacs()[3], series4, category1);
-        dataset.addValue(p.seriesbacs()[4], series5, category1);
+       // dataset.addValue(p.seriesbacs()[4], series5, category1);
         dataset.addValue(p.seriesbacs()[5], series6, category1);
         
         

@@ -24,10 +24,14 @@ public class SuppForm extends Controleur{
     @Override
     public void control(ArrayList<String> s) {
         System.out.println("élève " + s.get(0));
-        Etudiant etu;
-        etu=p.searchEtudiant(s.get(0));
-        p.removeEtudiant(etu);
-        p.notifyObservateur();
+        if(p.searchEtudiant(s.get(0))!=null){
+            Etudiant etu;
+            etu=p.searchEtudiant(s.get(0));
+            p.removeEtudiant(etu);
+            p.notifyObservateur();
+        } else {
+            System.out.println("l'etudiant n'existe pas");  
+        }
     }
     
 }

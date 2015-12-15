@@ -31,10 +31,10 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
     JComboBox cbac,cdept;
     JButton Ajout,supprimer;
     Promotion p;
-    ArrayList<String> modif;
+   
     
     public Vue_formulaire(Promotion prom){
-        modif = new ArrayList();
+         
         p=prom;
         titre = new JLabel("Ajout d'un etudiant");
         num = new JLabel("Numero");
@@ -54,7 +54,8 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
         cbac.addItem("S");
         cbac.addItem("ES");
         cbac.addItem("STI");
-        cbac.addItem("L");
+        cbac.addItem("STG");
+       // cbac.addItem("L");
         
         cdept = new JComboBox();
             for (int i=1;i<97;i++)
@@ -142,6 +143,8 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==Ajout){
+            ArrayList<String> modif;
+        modif = new ArrayList();
             modif.add(tnum.getText());
             modif.add(tnom.getText());
             modif.add(tprenom.getText());
@@ -151,6 +154,8 @@ public class Vue_formulaire extends JInternalFrame implements ActionListener{
             controleur.control(modif);
         }
         if(e.getSource()==supprimer){
+            ArrayList<String> modif;
+        modif = new ArrayList();
                 System.out.println("Supprimé");
                 modif.add(tnumero.getText());
                 Controleur controleur=new SuppForm(p);

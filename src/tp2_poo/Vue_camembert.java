@@ -40,10 +40,9 @@ public class Vue_camembert extends JInternalFrame implements Observateur{
 
     @Override
     public void update() {
-        this.remove(panel);
-        charts = c.createChart(c.createSampleDataset(prom));
-        panel=new ChartPanel(charts);
-        this.add(panel);
+      charts=c.createChart(c.createSampleDataset(prom));
+       panel=new ChartPanel(charts);
+      this.setContentPane(panel);
     }
     
      public class Camembert{
