@@ -30,11 +30,11 @@ public class AjoutForm extends Controleur{
             }
             catch(Exception e){
                 continu=false;
-                JOptionPane.showMessageDialog(new JFrame(),"le numéro n'est pas un nombre","Erreur", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(),"Le numéro n'est pas un nombre","Erreur", JOptionPane.WARNING_MESSAGE);
             }
             if(continu==true){
                 if(s.get(1).length()==0||s.get(2).length()==0){
-                 JOptionPane.showMessageDialog(new JFrame(),"l'un des champs est vide","Erreur", JOptionPane.WARNING_MESSAGE);
+                 JOptionPane.showMessageDialog(new JFrame(),"L'un des champs est vide","Erreur", JOptionPane.WARNING_MESSAGE);
                 }
                 else{
                     Etudiant etu = new Etudiant(s.get(0), s.get(1), s.get(2), s.get(3), s.get(4));
